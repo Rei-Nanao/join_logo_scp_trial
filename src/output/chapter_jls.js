@@ -47,9 +47,11 @@ function TrimReader(file){
       resolve(nItemTrim);
     });
     Reader.on("line", (data) => {
-      for(let r of data.match(RegExp(strRegTrim,'g'))){
-        nItemTrim.push(Number(r.match(new RegExp(strRegTrim))[1]));
-        nItemTrim.push(Number(r.match(new RegExp(strRegTrim))[2]) + 1);
+      if(data != ""){
+        for(let r of data.match(RegExp(strRegTrim,'g'))){
+          nItemTrim.push(Number(r.match(new RegExp(strRegTrim))[1]));
+          nItemTrim.push(Number(r.match(new RegExp(strRegTrim))[2]) + 1);
+        }
       }
     });
   })
